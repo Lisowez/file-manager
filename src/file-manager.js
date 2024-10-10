@@ -1,13 +1,11 @@
 import { homedir } from "os";
 import path from "path";
-import * as fs from "fs/promises";
 import readline from "readline";
 import {
   WELCOME_TEXT,
   BYE_TEXT,
   CURRENTLY_IN,
   INVALID_INPUT,
-  OPERATION_FAILED,
 } from "./constans.js";
 
 import ls from "./modules/ls.js";
@@ -20,6 +18,8 @@ import mv from "./modules/mv.js";
 import rm from "./modules/rm.js";
 import osInfo from "./modules/osInfo.js";
 import hash from "./modules/hash.js";
+import compress from "./modules/compress.js";
+import decompress from "./modules/decompress.js";
 
 const args = process.argv.slice(2);
 
@@ -75,6 +75,12 @@ const fileManager = async () => {
           break;
         case `hash ${input.split(" ")[1]}`:
           hash(input, currentDir);
+          break;
+        case `compress ${input.split(" ")[1]} ${input.split(" ")[2]}`:
+          compress(input, currentDir);
+          break;
+        case `decompress ${input.split(" ")[1]} ${input.split(" ")[2]}`:
+          decompress(input, currentDir);
           break;
         default:
           console.log(INVALID_INPUT);
