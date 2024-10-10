@@ -19,6 +19,7 @@ import cp from "./modules/cp.js";
 import mv from "./modules/mv.js";
 import rm from "./modules/rm.js";
 import osInfo from "./modules/osInfo.js";
+import hash from "./modules/hash.js";
 
 const args = process.argv.slice(2);
 
@@ -71,6 +72,9 @@ const fileManager = async () => {
           break;
         case `os ${input.split(" ")[1]}`:
           osInfo(input.split(" ")[1]);
+          break;
+        case `hash ${input.split(" ")[1]}`:
+          hash(input, currentDir);
           break;
         default:
           console.log(INVALID_INPUT);

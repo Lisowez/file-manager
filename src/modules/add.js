@@ -6,12 +6,12 @@ const add = async (input, currentDir) => {
   const newFilePath = path.join(currentDir, input.split(" ")[1].trim());
   try {
     await fs.access(newFilePath, fs.constants.F_OK);
-    console.error(OPERATION_FAILED + 1);
+    console.error(OPERATION_FAILED);
   } catch {
     try {
       await fs.writeFile(newFilePath, "");
     } catch (error) {
-      console.error(OPERATION_FAILED + 2);
+      console.error(OPERATION_FAILED);
     }
   }
 };
