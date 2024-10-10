@@ -16,6 +16,7 @@ import cat from "./modules/cat.js";
 import add from "./modules/add.js";
 import rn from "./modules/rn.js";
 import cp from "./modules/cp.js";
+import mv from "./modules/mv.js";
 
 const args = process.argv.slice(2);
 
@@ -58,6 +59,9 @@ const fileManager = async () => {
           break;
         case `cp ${input.split(" ")[1]} ${input.split(" ")[2]}`:
           cp(input, currentDir);
+          break;
+          case `mv ${input.split(" ")[1]} ${input.split(" ")[2]}`:
+            mv(input, currentDir);  
           break;
         default:
           console.log(INVALID_INPUT);
