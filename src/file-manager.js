@@ -17,6 +17,8 @@ import add from "./modules/add.js";
 import rn from "./modules/rn.js";
 import cp from "./modules/cp.js";
 import mv from "./modules/mv.js";
+import rm from "./modules/rm.js";
+import osInfo from "./modules/osInfo.js";
 
 const args = process.argv.slice(2);
 
@@ -60,8 +62,15 @@ const fileManager = async () => {
         case `cp ${input.split(" ")[1]} ${input.split(" ")[2]}`:
           cp(input, currentDir);
           break;
-          case `mv ${input.split(" ")[1]} ${input.split(" ")[2]}`:
-            mv(input, currentDir);  
+        case `mv ${input.split(" ")[1]} ${input.split(" ")[2]}`:
+          mv(input, currentDir);
+          break;
+
+        case `rm ${input.split(" ")[1]}`:
+          await rm(input, currentDir);
+          break;
+        case `os ${input.split(" ")[1]}`:
+          osInfo(input.split(" ")[1]);
           break;
         default:
           console.log(INVALID_INPUT);
