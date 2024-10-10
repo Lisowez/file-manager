@@ -15,6 +15,7 @@ import cd from "./modules/cd.js";
 import cat from "./modules/cat.js";
 import add from "./modules/add.js";
 import rn from "./modules/rn.js";
+import cp from "./modules/cp.js";
 
 const args = process.argv.slice(2);
 
@@ -55,7 +56,9 @@ const fileManager = async () => {
         case `rn ${input.split(" ")[1]} ${input.split(" ")[2]}`:
           await rn(input, currentDir);
           break;
-
+        case `cp ${input.split(" ")[1]} ${input.split(" ")[2]}`:
+          cp(input, currentDir);
+          break;
         default:
           console.log(INVALID_INPUT);
           break;
